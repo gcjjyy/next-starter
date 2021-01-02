@@ -1,5 +1,5 @@
 import { useStore } from '@/common/store'
-import { fetchUserInfo } from '@/lib/fetch'
+import { fetchUserProfile } from '@/lib/fetch'
 import { auth } from '@/lib/firebase'
 import {
   ChakraProvider,
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
         store.setUserProfile(null)
       } else {
         store.setUser(user)
-        const userProfile = await fetchUserInfo(store, user.uid)
+        const userProfile = await fetchUserProfile(store, user.uid)
         if (!userProfile) {
           router.push('/signup')
         }
